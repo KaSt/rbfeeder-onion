@@ -47,6 +47,7 @@ else
 endif
 
 UNAME := $(shell uname)
+UNAME_OS_VERSIOM := $(shell uname -m)
 
 ifeq ($(UNAME), Linux)
   CPPFLAGS += -D_DEFAULT_SOURCE
@@ -87,6 +88,10 @@ ifeq ($(UNAME), NetBSD)
   LIBS += -lrt
   LIBS_USB += -lusb-1.0
   LIBS_CURSES := -lcurses
+endif
+
+ifeq ($(UNAME_OS_VERSION), mips)
+  CPUFEATURES ?= no
 endif
 
 CPUFEATURES ?= no
