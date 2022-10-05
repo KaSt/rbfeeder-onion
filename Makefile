@@ -91,7 +91,7 @@ ifeq ($(UNAME), NetBSD)
 endif
 
 ifeq ($(UNAME_OS_VERSION), mips)
-  CPUFEATURES ?= no
+  CPUFEATURES := no
 endif
 
 CPUFEATURES ?= no
