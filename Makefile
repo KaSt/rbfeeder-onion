@@ -54,7 +54,6 @@ ifeq ($(UNAME), Linux)
   LIBS += -lrt
   LIBS_USB += -lusb-1.0
   LIBS_CURSES := -lncurses
-  CPUFEATURES ?= yes
 endif
 
 ifeq ($(UNAME), Darwin)
@@ -90,16 +89,7 @@ ifeq ($(UNAME), NetBSD)
   LIBS_CURSES := -lcurses
 endif
 
-ifeq ($(UNAME_OS_VERSION), mips)
-  CPUFEATURES := no
-endif
-
-CPUFEATURES ?= no
-
-ifeq ($(CPUFEATURES),yes)
-  include Makefile.cpufeatures
-  CPPFLAGS += -DENABLE_CPUFEATURES -Icpu_features/include
-endif
+CPUFEATURES := no
 
 RTLSDR ?= yes
 BLADERF ?= yes
